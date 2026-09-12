@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEHOMOSAPIENS</title>
+  <!-- Spectral（英文衬线，SIL OFL）+ Noto Serif SC（中文衬线，SIL OFL），均可免费商用 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700;800&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 混凝土噪点质感层（覆盖全站） -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- 全站星空底层（JS 生成随机星点） -->
+  <div class="stars" aria-hidden="true"></div>
+
+  <!-- 导航栏 -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" data-bind="company.name"></a>
+    <nav class="nav__links" id="nav-links"></nav>
+  </header>
+
+  <!-- 第一屏：Hero -->
+  <section class="hero" id="top">
+    <div class="hero__frame">
+      <p class="hero__subtitle" data-bind="hero.subtitle"></p>
+      <h1 class="hero__title" id="hero-title"></h1>
+      <div class="hero__rule" aria-hidden="true"></div>
+      <p class="hero__tagline" data-bind="company.tagline"></p>
+    </div>
+
+    <!-- 星空底层（JS 生成随机星点） -->
+    <div class="hero__stars" aria-hidden="true"></div>
+
+    <!-- 昴星团（Pleiades）：史前历法的起点，七姊妹星团 -->
+    <svg class="hero__sky" viewBox="0 0 400 400" aria-hidden="true">
+      <!-- 星群连线 -->
+      <line class="sky__line" x1="200" y1="190" x2="185" y2="155" pathLength="1" style="--d:1.5s"/>
+      <line class="sky__line" x1="200" y1="190" x2="170" y2="215" pathLength="1" style="--d:1.58s"/>
+      <line class="sky__line" x1="170" y1="215" x2="150" y2="235" pathLength="1" style="--d:1.66s"/>
+      <line class="sky__line" x1="185" y1="155" x2="225" y2="150" pathLength="1" style="--d:1.74s"/>
+      <line class="sky__line" x1="225" y1="150" x2="275" y2="110" pathLength="1" style="--d:1.82s"/>
+      <line class="sky__line" x1="275" y1="110" x2="260" y2="95"  pathLength="1" style="--d:1.9s"/>
+      <!-- 主星（Alcyone 为主色最亮星） -->
+      <circle class="sky__star" cx="185" cy="155" r="3.2" style="--d:2.2s"/>
+      <circle class="sky__star" cx="225" cy="150" r="3"   style="--d:2.28s"/>
+      <circle class="sky__star" cx="170" cy="215" r="3"   style="--d:2.36s"/>
+      <circle class="sky__star" cx="150" cy="235" r="3"   style="--d:2.44s"/>
+      <circle class="sky__star" cx="275" cy="110" r="3"   style="--d:2.52s"/>
+      <circle class="sky__star" cx="260" cy="95"  r="2.5" style="--d:2.6s"/>
+      <circle class="sky__star" cx="240" cy="205" r="2.2" style="--d:2.68s"/>
+      <circle class="sky__star" cx="255" cy="165" r="1.8" style="--d:2.76s"/>
+      <!-- 暗星与散落星点 -->
+      <circle class="sky__star" cx="210" cy="235" r="1.3" style="--d:2.84s"/>
+      <circle class="sky__star" cx="160" cy="180" r="1.2" style="--d:2.92s"/>
+      <circle class="sky__star" cx="235" cy="120" r="1.3" style="--d:3s"/>
+      <circle class="sky__star" cx="190" cy="120" r="1.1" style="--d:3.08s"/>
+      <circle class="sky__star" cx="140" cy="200" r="1.2" style="--d:3.16s"/>
+      <circle class="sky__star" cx="300" cy="160" r="1.2" style="--d:3.24s"/>
+      <circle class="sky__star" cx="120" cy="150" r="1.1" style="--d:3.32s"/>
+      <circle class="sky__star" cx="285" cy="220" r="1.2" style="--d:3.4s"/>
+      <circle class="sky__star" cx="90"  cy="260" r="1.1" style="--d:3.48s"/>
+      <circle class="sky__star" cx="330" cy="90"  r="1.2" style="--d:3.56s"/>
+      <!-- Alcyone：主色 + 硬边光环 -->
+      <circle class="sky__ring" cx="200" cy="190" r="13"/>
+      <circle class="sky__ember" cx="200" cy="190" r="7.5"/>
+    </svg>
+    <a class="hero__scroll-hint" href="#products" data-bind="hero.scrollHint"></a>
+  </section>
+
+  <!-- 第二屏：产品列表 -->
+  <section class="products" id="products">
+    <header class="products__header">
+      <h2 class="products__title" data-bind="sectionTitle"></h2>
+      <!-- <span class="products__count" id="products-count"></span> -->
+    </header>
+    <div id="businesses"></div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer" id="contact">
+    <span class="footer__label" data-bind="footer.contactLabel"></span>
+    <a class="footer__email" id="footer-email" href="#"></a>
+    <span class="footer__copyright" data-bind="footer.copyright"></span>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
