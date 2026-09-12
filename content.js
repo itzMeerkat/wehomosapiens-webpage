@@ -19,7 +19,7 @@ window.CONTENT = {
 
   // ── 公司信息 ──────────────────────────────────────
   company: {
-    name: "WE,HOMO SAPIENS",
+    name: "WE, HOMO SAPIENS",
     tagline: "我左手 AI ，右手石块，抬头望向星空。", // 首页标语（placeholder）
     // description: "一家专注于 App 开发的公司。", // placeholder
   },
@@ -87,13 +87,27 @@ window.CONTENT = {
         },
       ],
     },
-    // 未来新业务示例（取消注释即可显示）：
-    // {
-    //   code: "02",
-    //   name: "新业务",
-    //   description: "业务描述占位符。",
-    //   lines: [],
-    // },
+    {
+      code: "02",
+      name: "新业务",
+      description: "业务描述占位符。",
+      lines: [
+        {
+          name: "产品线 X",
+          description: "产品线描述占位符。",
+          items: [
+            {
+              name: "PRODUCT 001",
+              icon: "",
+              description: "一句话介绍占位符。",
+              links: [
+                { label: "官网", href: "#" },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ],
 
   // ── 页脚 / 联系 ───────────────────────────────────

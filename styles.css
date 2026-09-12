@@ -14,8 +14,8 @@
   --line: rgba(233, 227, 215, 0.16);   /* 发丝分割线 */
 
   /* 昼（第二屏） */
-  --day: #ece5d6;                 /* 风化骨岩，昼屏底色 */
-  --day-soft: #dfd6c3;            /* 昼屏稍深的岩面 */
+  --day: #e7e7e3;                 /* 岩石的灰白色，昼屏底色 */
+  --day-soft: #d9d9d3;            /* 昼屏稍深的岩面 */
   --ink2: #1c1712;                /* 昼屏主文字 */
   --ink-dim: rgba(28, 23, 18, 0.6);
   --day-line: rgba(28, 23, 18, 0.18);
@@ -37,17 +37,6 @@ body {
 }
 
 ::selection { background: var(--accent); color: var(--bg); }
-
-/* ── 岩面噪点 ───────────────────────────────────────── */
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.4;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-}
 
 /* ── 导航 ───────────────────────────────────────────── */
 .nav {
@@ -228,12 +217,12 @@ body.is-loaded .hero__scroll-hint {
 /* ── 星座 / 星轨（原始导航术 × 太空时代） ────────────── */
 .hero__sky {
   position: absolute;
-  right: clamp(1rem, 6vw, 6rem);
+  right: clamp(1rem, 5vw, 5rem);
   top: 50%;
-  margin-top: -13.5rem;
+  margin-top: -17rem;
   z-index: 0;
-  width: 27rem;
-  height: 27rem;
+  width: 34rem;
+  height: 34rem;
 }
 
 /* 连线：加载后逐段描绘出来 */
@@ -241,7 +230,7 @@ body.is-loaded .hero__scroll-hint {
   fill: none;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 1.5s);
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0.9s);
 }
 body.is-loaded .sky__line { stroke-dashoffset: 0; }
 
@@ -250,7 +239,7 @@ body.is-loaded .sky__line { stroke-dashoffset: 0; }
 .sky__star {
   fill: var(--bone);
   opacity: 0;
-  transition: opacity 0.9s ease var(--d, 2.2s);
+  transition: opacity 0.6s ease var(--d, 1.4s);
 }
 body.is-loaded .sky__star { opacity: 1; }
 
@@ -258,7 +247,7 @@ body.is-loaded .sky__star { opacity: 1; }
 .sky__ember {
   fill: var(--accent);
   opacity: 0;
-  transition: opacity 1s ease 2.4s;
+  transition: opacity 0.8s ease 1.5s;
 }
 body.is-loaded .sky__ember { opacity: 1; }
 
@@ -267,8 +256,8 @@ body.is-loaded .sky__ember { opacity: 1; }
   stroke: var(--accent);
   stroke-width: 1.25;
   opacity: 0;
-  transition: opacity 1s ease 2.6s;
-  animation: ring-pulse 4.5s ease-in-out 3.6s infinite;
+  transition: opacity 0.8s ease 1.7s;
+  animation: ring-pulse 4.5s ease-in-out 2.6s infinite;
 }
 body.is-loaded .sky__ring { opacity: 1; }
 @keyframes ring-pulse {
@@ -321,7 +310,7 @@ body.is-loaded .sky__ring { opacity: 1; }
     radial-gradient(1.5px 1.5px at 93% 44%, rgba(28, 23, 18, 0.25), transparent),
     radial-gradient(1px 1px at 50% 82%, rgba(28, 23, 18, 0.18), transparent),
     radial-gradient(1px 1px at 88% 80%, rgba(28, 23, 18, 0.2), transparent),
-    linear-gradient(180deg, #f2ecdf 0%, var(--day) 300px, #e5dccb 100%);
+    linear-gradient(180deg, #f4f4f1 0%, var(--day) 300px, #dcdcd6 100%);
 }
 
 /* 洞口上沿：深色钟乳石剪影，硬边，衔接第一屏的夜 */
@@ -355,8 +344,65 @@ body.is-loaded .sky__ring { opacity: 1; }
 
 .products__count {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.1em;
+  color: var(--ink-dim);
+}
+
+/* ── 业务 Tab：物理开关，未选中凸起、选中按下 ───────── */
+.biz-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--day-line);
+}
+
+.biz-tab {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.65rem 1.5rem;
+  border: 1px solid var(--day-line);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--ink-dim);
+  cursor: pointer;
+  /* 凸起：顶边受光 + 右下硬影 */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8),
+              2px 2px 0 rgba(28, 23, 18, 0.14);
+  transition: background 0.2s ease, color 0.2s ease,
+              border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.biz-tab:hover {
+  border-color: var(--ink2);
+  color: var(--ink2);
+}
+
+/* 选中 = 按下：内凹阴影，位移一格 */
+.biz-tab.is-active {
+  background: var(--ink2);
+  border-color: var(--ink2);
+  color: var(--day);
+  transform: translate(1px, 1px);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+.biz-tab__code {
+  font-size: 0.72em;
+  letter-spacing: 0.1em;
+  margin-right: 0.6em;
+  opacity: 0.65;
+}
+
+/* 当前业务的描述，安静地在 Tab 栏右侧 */
+.biz-tabs__desc {
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--ink-dim);
 }
 
@@ -366,39 +412,6 @@ body.is-loaded .sky__ring { opacity: 1; }
   flex-direction: column;
   gap: 1.25rem;
   padding: 1.75rem 1.5rem;
-}
-
-/* ── 业务块 ────────────────────────────────────────── */
-.business__header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 2rem;
-  align-items: baseline;
-  padding: 3rem 2rem 2rem;
-  border-bottom: 1px solid var(--day-line);
-}
-
-.business__code {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  color: var(--ink2);
-  border: 1px solid var(--day-line);
-  border-radius: 999px;
-  padding: 0.3rem 0.9rem;
-  justify-self: start;
-}
-
-.business__name {
-  font-size: clamp(1.4rem, 3vw, 2.25rem);
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.business__description {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--ink-dim);
 }
 
 /* ── 产品线分栏：等宽竖排，体现平级 ────────────────── */
@@ -426,31 +439,32 @@ body.is-loaded .sky__ring { opacity: 1; }
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-weight: 900;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
 }
 
-/* 产品线星点标记：赭橙 / 星光 / 骨白轮换 */
+/* 产品线星点标记：主色 / 副色 / 墨轮换 */
 .line__chip {
-  width: 0.55em;
-  height: 0.55em;
+  width: 0.7em;
+  height: 0.7em;
   flex: none;
   border-radius: 50%;
   background: var(--accent);
+  box-shadow: 0 0 0 1px var(--day-line);   /* 保证在任何底色上都可见 */
 }
 
 .line__description {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--ink-dim);
   flex: 1;
 }
 
 .line__count {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 0.1em;
   color: var(--ink-dim);
 }
@@ -467,7 +481,7 @@ body.is-loaded .sky__ring { opacity: 1; }
               background 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* ── 产品条目：昼屏上的浅色石板 ────────────────────── */
+/* ── 产品条目：凸起的石板 ─────────────────────────── */
 .product {
   display: flex;
   flex-direction: column;
@@ -476,16 +490,21 @@ body.is-loaded .sky__ring { opacity: 1; }
   border: 1px solid var(--day-line);
   border-radius: 6px;
   color: var(--ink2);
-  background: rgba(255, 251, 240, 0.5);
+  /* 石面纹理 + 顶边受光、右下浅影：像一块凸起的石板 */
+  background-color: rgba(255, 255, 255, 0.55);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85),
+              2px 2px 0 rgba(28, 23, 18, 0.08);
   transition: border-color 0.25s ease, box-shadow 0.25s ease,
-              background 0.25s ease, transform 0.25s ease;
+              background-color 0.25s ease, transform 0.25s ease;
 }
 
-/* 悬停：石板浮起，投下硬边墨影，描边染上灰紫 */
+/* 悬停：石板被掀起，影子加深 */
 .product:hover {
-  background: rgba(255, 251, 240, 0.9);
+  background-color: rgba(255, 255, 255, 0.92);
   border-color: var(--accent-2);
-  box-shadow: 5px 5px 0 rgba(28, 23, 18, 0.85);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+              5px 5px 0 rgba(28, 23, 18, 0.22);
   transform: translate(-2px, -3px);
 }
 
@@ -530,9 +549,9 @@ body.is-loaded .sky__ring { opacity: 1; }
 }
 
 .product__description {
-  font-size: 0.9rem;
-  font-weight: 400;
-  line-height: 1.6;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
   color: var(--ink-dim);
 }
 
@@ -544,20 +563,26 @@ body.is-loaded .sky__ring { opacity: 1; }
 
 .product__link {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 1rem;
   border: 1px solid var(--day-line);
-  border-radius: 999px;          /* 胶囊形 */
+  border-radius: 4px;            /* 小圆角矩形 */
+  background: rgba(255, 255, 255, 0.45);
   color: var(--ink2);
   text-decoration: none;
-  transition: border-color 0.2s, background 0.15s, color 0.15s;
+  /* 常态存在的硬边投影 */
+  box-shadow: 2px 2px 0 rgba(28, 23, 18, 0.14);
+  transition: border-color 0.2s, background 0.15s, color 0.15s,
+              box-shadow 0.15s, transform 0.15s;
 }
 
 .product__link:hover {
   background: var(--ink2);
   border-color: var(--ink2);
   color: var(--day);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 rgba(28, 23, 18, 0.2);
 }
 
 /* ── 页脚 ──────────────────────────────────────────── */
@@ -608,18 +633,13 @@ body.is-loaded .sky__ring { opacity: 1; }
     border-right: none;
     border-bottom: 1px solid var(--day-line);
   }
-  .business__header {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    padding-top: 2rem;
-  }
   .hero__sky {
     scale: 0.55;
     transform-origin: right center;
   }
   .nav { padding: 0.85rem 1.25rem; }
   .hero, .products__header, .product, .footer,
-  .business__header, .line__header { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .line__header, .biz-tabs { padding-left: 1.25rem; padding-right: 1.25rem; }
 }
 
 /* ── 尊重减少动效偏好 ──────────────────────────────── */

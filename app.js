@@ -49,24 +49,28 @@
     heroTitle.appendChild(lineEl);
   });
 
-  // ── 业务 / 产品线 / 产品列表 ────────────────────────
+  // ── 业务 Tab / 产品线 / 产品列表 ──────────────────────
   var container = document.getElementById("businesses");
-  var total = 0;
-  // 产品线星点标记的配色轮换：赭橙 / 昼空蓝 / 墨
-  var PALETTE = ["var(--accent)", "var(--teal)", "var(--ink2)"];
-  var lineIndex = 0;
+  var tabsBox = document.getElementById("biz-tabs");
+  // 产品线星点标记：统一为主色
+  var CHIP_COLOR = "var(--accent)";
 
-  C.businesses.forEach(function (b) {
+  // 滚动入场 observer 提前定义，Tab 切换重新渲染时复用
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  function renderBusiness(bi) {
+    var b = C.businesses[bi];
+    container.innerHTML = "";
+
     var section = document.createElement("section");
     section.className = "business";
-
-    var head = document.createElement("header");
-    head.className = "business__header reveal";
-    head.innerHTML =
-      '<span class="business__code">' + escapeHtml(b.code || "") + "</span>" +
-      '<span class="business__name">' + escapeHtml(b.name) + "</span>" +
-      '<span class="business__description">' + escapeHtml(b.description || "") + "</span>";
-    section.appendChild(head);
 
     // 产品线并排放置在同一层等宽分栏中，体现平级关系
     var linesWrap = document.createElement("div");
@@ -78,10 +82,9 @@
 
       var lineHead = document.createElement("header");
       lineHead.className = "line__header reveal";
-      var chipColor = PALETTE[lineIndex++ % PALETTE.length];
       lineHead.innerHTML =
         '<span class="line__name">' +
-          '<span class="line__chip" style="background:' + chipColor + '" aria-hidden="true"></span>' +
+          '<span class="line__chip" style="background:' + CHIP_COLOR + '" aria-hidden="true"></span>' +
           escapeHtml(line.name) + "</span>" +
         '<span class="line__description">' + escapeHtml(line.description || "") + "</span>" +
         '<span class="line__count">(' + String(line.items.length).padStart(2, "0") + ")</span>";
@@ -91,7 +94,6 @@
       ul.className = "products__list";
 
       line.items.forEach(function (p) {
-        total += 1;
         var li = document.createElement("li");
         var card = document.createElement("div");
         card.className = "product reveal";
@@ -124,10 +126,40 @@
 
     section.appendChild(linesWrap);
     container.appendChild(section);
+
+    section.querySelectorAll(".reveal").forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  function activate(i) {
+    tabsBox.querySelectorAll(".biz-tab").forEach(function (t, ti) {
+      t.classList.toggle("is-active", ti === i);
+      t.setAttribute("aria-selected", ti === i ? "true" : "false");
+    });
+    // 当前业务的描述显示在 Tab 栏右侧
+    tabDesc.textContent = C.businesses[i].description || "";
+    renderBusiness(i);
+  }
+
+  // Tab 栏右侧的业务描述
+  var tabDesc = document.createElement("span");
+  tabDesc.className = "biz-tabs__desc";
+
+  C.businesses.forEach(function (b, i) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "biz-tab";
+    btn.setAttribute("role", "tab");
+    btn.innerHTML =
+      '<span class="biz-tab__code">' + escapeHtml(b.code || "") + "</span>" +
+      escapeHtml(b.name);
+    btn.addEventListener("click", function () { activate(i); });
+    tabsBox.appendChild(btn);
   });
 
-  // document.getElementById("products-count").textContent =
-  //   "(" + String(total).padStart(2, "0") + ")";
+  tabsBox.appendChild(tabDesc);
+  activate(0);
 
   // ── 页脚邮箱 ────────────────────────────────────────
   var email = document.getElementById("footer-email");
@@ -140,20 +172,6 @@
     requestAnimationFrame(function () {
       document.body.classList.add("is-loaded");
     });
-  });
-
-  // ── 滚动入场（IntersectionObserver）─────────────────
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll(".reveal").forEach(function (el) {
-    observer.observe(el);
   });
 
   // ── 整屏滚动：首屏一次滚轮直达第二屏 ────────────────

@@ -7,13 +7,10 @@
   <!-- Spectral（英文衬线，SIL OFL）+ Noto Serif SC（中文衬线，SIL OFL），均可免费商用 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700;800&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;700;800&family=Noto+Serif+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- 混凝土噪点质感层（覆盖全站） -->
-  <div class="grain" aria-hidden="true"></div>
 
   <!-- 全站星空底层（JS 生成随机星点） -->
   <div class="stars" aria-hidden="true"></div>
@@ -36,35 +33,36 @@
     <!-- 星空底层（JS 生成随机星点） -->
     <div class="hero__stars" aria-hidden="true"></div>
 
-    <!-- 昴星团（Pleiades）：史前历法的起点，七姊妹星团 -->
+    <!-- 昴星团（Pleiades）：按真实方位绘制——Alcyone 居中，
+         Atlas/Pleione 双星在东北（左上），
+         Maia–Taygeta–Celaeno–Electra 向西（右）成链 -->
     <svg class="hero__sky" viewBox="0 0 400 400" aria-hidden="true">
       <!-- 星群连线 -->
-      <line class="sky__line" x1="200" y1="190" x2="185" y2="155" pathLength="1" style="--d:1.5s"/>
-      <line class="sky__line" x1="200" y1="190" x2="170" y2="215" pathLength="1" style="--d:1.58s"/>
-      <line class="sky__line" x1="170" y1="215" x2="150" y2="235" pathLength="1" style="--d:1.66s"/>
-      <line class="sky__line" x1="185" y1="155" x2="225" y2="150" pathLength="1" style="--d:1.74s"/>
-      <line class="sky__line" x1="225" y1="150" x2="275" y2="110" pathLength="1" style="--d:1.82s"/>
-      <line class="sky__line" x1="275" y1="110" x2="260" y2="95"  pathLength="1" style="--d:1.9s"/>
-      <!-- 主星（Alcyone 为主色最亮星） -->
-      <circle class="sky__star" cx="185" cy="155" r="3.2" style="--d:2.2s"/>
-      <circle class="sky__star" cx="225" cy="150" r="3"   style="--d:2.28s"/>
-      <circle class="sky__star" cx="170" cy="215" r="3"   style="--d:2.36s"/>
-      <circle class="sky__star" cx="150" cy="235" r="3"   style="--d:2.44s"/>
-      <circle class="sky__star" cx="275" cy="110" r="3"   style="--d:2.52s"/>
-      <circle class="sky__star" cx="260" cy="95"  r="2.5" style="--d:2.6s"/>
-      <circle class="sky__star" cx="240" cy="205" r="2.2" style="--d:2.68s"/>
-      <circle class="sky__star" cx="255" cy="165" r="1.8" style="--d:2.76s"/>
+      <line class="sky__line" x1="200" y1="190" x2="162" y2="150" pathLength="1" style="--d:0.9s"/>
+      <line class="sky__line" x1="162" y1="150" x2="172" y2="138" pathLength="1" style="--d:0.96s"/>
+      <line class="sky__line" x1="200" y1="190" x2="222" y2="168" pathLength="1" style="--d:1.02s"/>
+      <line class="sky__line" x1="222" y1="168" x2="240" y2="162" pathLength="1" style="--d:1.08s"/>
+      <line class="sky__line" x1="240" y1="162" x2="255" y2="170" pathLength="1" style="--d:1.14s"/>
+      <line class="sky__line" x1="255" y1="170" x2="252" y2="194" pathLength="1" style="--d:1.2s"/>
+      <line class="sky__line" x1="200" y1="190" x2="218" y2="208" pathLength="1" style="--d:1.26s"/>
+      <!-- 主星 -->
+      <circle class="sky__star" cx="162" cy="150" r="3"   style="--d:1.35s"/>   <!-- Atlas -->
+      <circle class="sky__star" cx="172" cy="138" r="2.4" style="--d:1.42s"/>  <!-- Pleione -->
+      <circle class="sky__star" cx="222" cy="168" r="3"   style="--d:1.49s"/>  <!-- Maia -->
+      <circle class="sky__star" cx="240" cy="162" r="2.8" style="--d:1.56s"/>  <!-- Taygeta -->
+      <circle class="sky__star" cx="255" cy="170" r="2.2" style="--d:1.63s"/>  <!-- Celaeno -->
+      <circle class="sky__star" cx="252" cy="194" r="2.6" style="--d:1.7s"/>   <!-- Electra -->
+      <circle class="sky__star" cx="218" cy="208" r="2.8" style="--d:1.77s"/>  <!-- Merope -->
+      <circle class="sky__star" cx="199" cy="148" r="1.7" style="--d:1.84s"/>  <!-- Asterope -->
       <!-- 暗星与散落星点 -->
-      <circle class="sky__star" cx="210" cy="235" r="1.3" style="--d:2.84s"/>
-      <circle class="sky__star" cx="160" cy="180" r="1.2" style="--d:2.92s"/>
-      <circle class="sky__star" cx="235" cy="120" r="1.3" style="--d:3s"/>
-      <circle class="sky__star" cx="190" cy="120" r="1.1" style="--d:3.08s"/>
-      <circle class="sky__star" cx="140" cy="200" r="1.2" style="--d:3.16s"/>
-      <circle class="sky__star" cx="300" cy="160" r="1.2" style="--d:3.24s"/>
-      <circle class="sky__star" cx="120" cy="150" r="1.1" style="--d:3.32s"/>
-      <circle class="sky__star" cx="285" cy="220" r="1.2" style="--d:3.4s"/>
-      <circle class="sky__star" cx="90"  cy="260" r="1.1" style="--d:3.48s"/>
-      <circle class="sky__star" cx="330" cy="90"  r="1.2" style="--d:3.56s"/>
+      <circle class="sky__star" cx="150" cy="220" r="1.2" style="--d:2s"/>
+      <circle class="sky__star" cx="260" cy="130" r="1.1" style="--d:2.06s"/>
+      <circle class="sky__star" cx="180" cy="230" r="1.2" style="--d:2.12s"/>
+      <circle class="sky__star" cx="290" cy="190" r="1.1" style="--d:2.18s"/>
+      <circle class="sky__star" cx="130" cy="170" r="1.1" style="--d:2.24s"/>
+      <circle class="sky__star" cx="230" cy="120" r="1.2" style="--d:2.3s"/>
+      <circle class="sky__star" cx="210" cy="245" r="1.1" style="--d:2.36s"/>
+      <circle class="sky__star" cx="300" cy="120" r="1.2" style="--d:2.42s"/>
       <!-- Alcyone：主色 + 硬边光环 -->
       <circle class="sky__ring" cx="200" cy="190" r="13"/>
       <circle class="sky__ember" cx="200" cy="190" r="7.5"/>
@@ -78,6 +76,7 @@
       <h2 class="products__title" data-bind="sectionTitle"></h2>
       <!-- <span class="products__count" id="products-count"></span> -->
     </header>
+    <div class="biz-tabs" id="biz-tabs" role="tablist"></div>
     <div id="businesses"></div>
   </section>
 
