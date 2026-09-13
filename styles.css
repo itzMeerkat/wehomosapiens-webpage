@@ -7,7 +7,7 @@
   --bg: #0d0c0a;                  /* 洞壁 / 深空 */
   --bg-soft: #161411;             /* 稍亮的岩面 */
   --bone: #e9e3d7;                /* 骨白，主文字 */
-  --bone-dim: rgba(233, 227, 215, 0.55);
+  --bone-dim: rgba(233, 227, 215, 0.75);
   --accent: #47B5B8;              /* 主色：青碧 */
   --accent-2: #B69B9B;            /* 副色：灰紫，可按需调整 */
   --star: #9ecfe0;                /* 星光 */
@@ -17,7 +17,7 @@
   --day: #e7e7e3;                 /* 岩石的灰白色，昼屏底色 */
   --day-soft: #d9d9d3;            /* 昼屏稍深的岩面 */
   --ink2: #1c1712;                /* 昼屏主文字 */
-  --ink-dim: rgba(28, 23, 18, 0.6);
+  --ink-dim: rgba(28, 23, 18, 0.75);
   --day-line: rgba(28, 23, 18, 0.18);
 
   /* 全站衬线：Spectral（英，OFL）+ Noto Serif SC（中，OFL，均可免费商用） */
@@ -64,10 +64,11 @@ body.is-loaded .nav { transform: translateY(0); }
   text-decoration: none;
 }
 
-.nav__links { display: flex; gap: 1.75rem; }
+.nav__links { display: flex; align-items: center; gap: 1.75rem; }
 .nav__links a {
   font-family: var(--font-mono);
   font-size: 0.8rem;
+  line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--bone-dim);
@@ -76,6 +77,22 @@ body.is-loaded .nav { transform: translateY(0); }
   transition: border-color 0.15s, color 0.15s;
 }
 .nav__links a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* 语言切换按钮：小圆角矩形，与昼屏按钮同一语言 */
+.nav__lang {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--bone-dim);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav__lang:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ── 第一屏 Hero ────────────────────────────────────── */
 .hero {
@@ -206,12 +223,12 @@ body.is-loaded .hero__scroll-hint {
   position: absolute;
   border-radius: 50%;
   background: var(--bone);
-  opacity: 0.5;
+  opacity: 0.65;
   animation: twinkle var(--tw, 3s) ease-in-out var(--td, 0s) infinite;
 }
 @keyframes twinkle {
-  0%, 100% { opacity: 0.12; }
-  50% { opacity: 0.9; }
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 1; }
 }
 
 /* ── 星座 / 星轨（原始导航术 × 太空时代） ────────────── */
@@ -230,7 +247,7 @@ body.is-loaded .hero__scroll-hint {
   fill: none;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0.9s);
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0.55s);
 }
 body.is-loaded .sky__line { stroke-dashoffset: 0; }
 
@@ -239,7 +256,7 @@ body.is-loaded .sky__line { stroke-dashoffset: 0; }
 .sky__star {
   fill: var(--bone);
   opacity: 0;
-  transition: opacity 0.6s ease var(--d, 1.4s);
+  transition: opacity 0.6s ease var(--d, 1s);
 }
 body.is-loaded .sky__star { opacity: 1; }
 
@@ -247,7 +264,7 @@ body.is-loaded .sky__star { opacity: 1; }
 .sky__ember {
   fill: var(--accent);
   opacity: 0;
-  transition: opacity 0.8s ease 1.5s;
+  transition: opacity 0.8s ease 1.05s;
 }
 body.is-loaded .sky__ember { opacity: 1; }
 
@@ -256,8 +273,8 @@ body.is-loaded .sky__ember { opacity: 1; }
   stroke: var(--accent);
   stroke-width: 1.25;
   opacity: 0;
-  transition: opacity 0.8s ease 1.7s;
-  animation: ring-pulse 4.5s ease-in-out 2.6s infinite;
+  transition: opacity 0.8s ease 1.2s;
+  animation: ring-pulse 4.5s ease-in-out 1.9s infinite;
 }
 body.is-loaded .sky__ring { opacity: 1; }
 @keyframes ring-pulse {

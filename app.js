@@ -30,6 +30,18 @@
     navLinks.appendChild(a);
   });
 
+  // ── 语言切换按钮（导航栏最右）───────────────────────
+  var langBtn = document.createElement("button");
+  langBtn.type = "button";
+  langBtn.className = "nav__lang";
+  langBtn.textContent = C.langToggle || "EN";
+  langBtn.addEventListener("click", function () {
+    var next = window.LANG === "zh" ? "en" : "zh";
+    try { localStorage.setItem("whs-lang", next); } catch (e) {}
+    location.reload();
+  });
+  navLinks.appendChild(langBtn);
+
   // ── Hero 大标题：按行渲染，逐字母入场；第一行反色高亮 ──
   var heroTitle = document.getElementById("hero-title");
   var titleLines = C.hero.titleLines || [C.hero.title || C.company.name];
@@ -221,11 +233,12 @@
   // ── 星空底层：生成随机星点 ──────────────────────────
   var starsBox = document.querySelector(".hero__stars");
   if (starsBox) {
-    for (var i = 0; i < 80; i++) {
+    for (var i = 0; i < 130; i++) {
       var s = document.createElement("span");
       s.style.left = Math.random() * 100 + "%";
       s.style.top = Math.random() * 100 + "%";
-      var size = Math.random() < 0.85 ? 1 : 2;
+      var r = Math.random();
+      var size = r < 0.72 ? 1 : r < 0.96 ? 2 : 3;
       s.style.width = s.style.height = size + "px";
       s.style.setProperty("--tw", (2.5 + Math.random() * 4) + "s");
       s.style.setProperty("--td", (-Math.random() * 6) + "s");
@@ -246,8 +259,8 @@
       var r = hero.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width - 0.5;
       var y = (e.clientY - r.top) / r.height - 0.5;
-      if (starsEl) starsEl.style.translate = (x * 18) + "px " + (y * 12) + "px";
-      if (skyEl) skyEl.style.translate = (x * -32) + "px " + (y * -22) + "px";
+      if (starsEl) starsEl.style.translate = (x * 30) + "px " + (y * 20) + "px";
+      if (skyEl) skyEl.style.translate = (x * -54) + "px " + (y * -36) + "px";
     });
 
     // var dot = document.createElement("div");

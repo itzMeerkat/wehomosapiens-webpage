@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 底板：洞壁黑，圆角方 -->
+  <rect width="64" height="64" rx="14" fill="#0d0c0a"/>
+  <!-- 眉弓：三段折线，两端微微下折 -->
+  <path d="M14 27 L24 24.5 L40 24.5 L50 27"
+        fill="none" stroke="#e9e3d7" stroke-width="6.5" stroke-linejoin="bevel"/>
+  <!-- 鼻骨：上窄下宽的三角，悬于眉弓之下 -->
+  <path d="M32 34.5 L38.5 48 H25.5 Z" fill="#e9e3d7"/>
+</svg>
