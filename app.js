@@ -98,8 +98,8 @@
         '<span class="line__name">' +
           '<span class="line__chip" style="background:' + CHIP_COLOR + '" aria-hidden="true"></span>' +
           escapeHtml(line.name) + "</span>" +
-        '<span class="line__description">' + escapeHtml(line.description || "") + "</span>" +
-        '<span class="line__count">(' + String(line.items.length).padStart(2, "0") + ")</span>";
+        '<span class="line__description">' + escapeHtml(line.description || "") + "</span>";
+        // '<span class="line__count">(' + String(line.items.length).padStart(2, "0") + ")</span>";
       lineEl.appendChild(lineHead);
 
       var ul = document.createElement("ul");
@@ -150,13 +150,13 @@
       t.setAttribute("aria-selected", ti === i ? "true" : "false");
     });
     // 当前业务的描述显示在 Tab 栏右侧
-    tabDesc.textContent = C.businesses[i].description || "";
+    // tabDesc.textContent = C.businesses[i].description || "";
     renderBusiness(i);
   }
 
   // Tab 栏右侧的业务描述
-  var tabDesc = document.createElement("span");
-  tabDesc.className = "biz-tabs__desc";
+  // var tabDesc = document.createElement("span");
+  // tabDesc.className = "biz-tabs__desc";
 
   C.businesses.forEach(function (b, i) {
     var btn = document.createElement("button");
@@ -170,7 +170,7 @@
     tabsBox.appendChild(btn);
   });
 
-  tabsBox.appendChild(tabDesc);
+  // tabsBox.appendChild(tabDesc);
   activate(0);
 
   // ── 页脚邮箱 ────────────────────────────────────────

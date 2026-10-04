@@ -42,7 +42,7 @@ var STRINGS = {
   zh: {
     company: {
       name: "WE, HOMO SAPIENS",
-      tagline: "我左手 AI ，右手石块，抬头望向星空。", // 首页标语（placeholder）
+      tagline: "我们应该记得，我们都是晚期智人。", // 首页标语（placeholder）
       // description: "一家专注于 App 开发的公司。", // placeholder
     },
 
@@ -55,7 +55,6 @@ var STRINGS = {
     hero: {
       // 大标题，按行渲染；第一行带"选中反色"高亮
       titleLines: ["WE,", "Homo sapiens"],
-      subtitle: "我们，晚期智人",          // placeholder
       scrollHint: "↓↓↓",
     },
 
@@ -63,75 +62,73 @@ var STRINGS = {
     businesses: [
       {
         code: "01",
-        name: "Apps",
-        description: "每天都能用到",
+        name: "App",
         lines: [
           {
-            name: "让每天变好",
+            name: "让生活容易些",
             // description: "产品线描述占位符。",
             items: [
               {
-                name: "APP 001",
-                icon: "",
-                description: "一句话介绍占位符，说明这个 App 是做什么的。",
+                name: "Teleprompter with RC",
+                icon: "assets/app_icons/teleprompter.svg",
+                description: "好用的提词器，支持在任意软件上用悬浮窗展示提词内容，还支持用 Apple Watch App 进行遥控。",
                 links: [
-                  { label: "App Store", href: "#" },
-                  { label: "官网", href: "#" },
+                  { label: "App Store（建设中）", href: "#" }
                 ],
               },
-              {
-                name: "APP 002",
-                icon: "",
-                description: "一句话介绍占位符，说明这个 App 是做什么的。",
-                links: [
-                  { label: "App Store", href: "#" },
-                  { label: "Google Play", href: "#" },
-                ],
-              },
+              // {
+              //   name: "APP 002",
+              //   icon: "",
+              //   description: "一句话介绍占位符，说明这个 App 是做什么的。",
+              //   links: [
+              //     { label: "App Store", href: "#" },
+              //     { label: "Google Play", href: "#" },
+              //   ],
+              // },
             ],
           },
           {
-            name: "学习，学习，学习",
+            name: "学习是快乐的",
             // description: "产品线描述占位符。",
             items: [
               {
-                name: "APP 003",
+                name: "Project-Babel(Internal developing)",
                 icon: "",
-                description: "一句话介绍占位符，说明这个 App 是做什么的。",
+                description: "我学第二外语的目的是成为“文盲”。",
                 links: [
-                  { label: "官网", href: "#" },
+                  // { label: "官网", href: "#" },
                 ],
               },
             ],
           },
         ],
       },
-      {
-        code: "02",
-        name: "新业务",
-        description: "业务描述占位符。",
-        lines: [
-          {
-            name: "产品线 X",
-            description: "产品线描述占位符。",
-            items: [
-              {
-                name: "PRODUCT 001",
-                icon: "",
-                description: "一句话介绍占位符。",
-                links: [
-                  { label: "官网", href: "#" },
-                ],
-              },
-            ],
-          },
-        ],
-      },
+      // {
+      //   code: "02",
+      //   name: "新业务",
+      //   description: "业务描述占位符。",
+      //   lines: [
+      //     {
+      //       name: "产品线 X",
+      //       description: "产品线描述占位符。",
+      //       items: [
+      //         {
+      //           name: "PRODUCT 001",
+      //           icon: "",
+      //           description: "一句话介绍占位符。",
+      //           links: [
+      //             { label: "官网", href: "#" },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
     ],
 
     footer: {
       contactLabel: "联系我们",
-      email: "hello@example.com",             // placeholder
+      email: "admin@wehomosapiens.com",             // placeholder
       copyright: "© WEHOMOSAPIENS",
     },
     langToggle: "EN",                          // 语言切换按钮上显示的文字
@@ -141,7 +138,7 @@ var STRINGS = {
   en: {
     company: {
       name: "WE, HOMO SAPIENS",
-      tagline: "With AI in my left hand and a stone in my right, I look up at the stars.", // placeholder
+      tagline: "We shall remember, we are homo sapiens.", // placeholder
       // description: "An app development studio.",           // placeholder
     },
 
@@ -154,7 +151,6 @@ var STRINGS = {
     hero: {
       // Rendered line by line; the first line gets the inverted highlight
       titleLines: ["WE,", "Homo sapiens"],
-      subtitle: "We, the late Homo sapiens",          // placeholder
       scrollHint: "↓↓↓",
     },
 
@@ -162,75 +158,73 @@ var STRINGS = {
     businesses: [
       {
         code: "01",
-        name: "Apps",
-        description: "For every day",
+        name: "App",
         lines: [
           {
-            name: "Make every day better",
+            name: "Make life easier",
             // description: "Product line description placeholder.",
             items: [
               {
-                name: "APP 001",
-                icon: "",
-                description: "One-line placeholder describing what this app does.",
+                name: "Teleprompter with RC",
+                icon: "assets/app_icons/teleprompter.svg",
+                description: "One of the best teleprompter, allow floating window on any camera app. Also support using Apple Watch App as remote controller.",
                 links: [
-                  { label: "App Store", href: "#" },
-                  { label: "Website", href: "#" },
+                  { label: "App Store (Under construction)", href: "#" },
                 ],
               },
-              {
-                name: "APP 002",
-                icon: "",
-                description: "One-line placeholder describing what this app does.",
-                links: [
-                  { label: "App Store", href: "#" },
-                  { label: "Google Play", href: "#" },
-                ],
-              },
+              // {
+              //   name: "APP 002",
+              //   icon: "",
+              //   description: "One-line placeholder describing what this app does.",
+              //   links: [
+              //     { label: "App Store", href: "#" },
+              //     { label: "Google Play", href: "#" },
+              //   ],
+              // },
             ],
           },
           {
-            name: "Learn, learn, learn",
+            name: "Learning is fun",
             // description: "Product line description placeholder.",
             items: [
               {
-                name: "APP 003",
+                name: "Project-Babel(Internal developing)",
                 icon: "",
-                description: "One-line placeholder describing what this app does.",
+                description: "My goal in learning a second foreign language is to become \"illiterate\".",
                 links: [
-                  { label: "Website", href: "#" },
+                  // { label: "Website", href: "#" },
                 ],
               },
             ],
           },
         ],
       },
-      {
-        code: "02",
-        name: "New Business",
-        description: "Business description placeholder.",
-        lines: [
-          {
-            name: "Product Line X",
-            description: "Product line description placeholder.",
-            items: [
-              {
-                name: "PRODUCT 001",
-                icon: "",
-                description: "One-line placeholder description.",
-                links: [
-                  { label: "Website", href: "#" },
-                ],
-              },
-            ],
-          },
-        ],
-      },
+      // {
+      //   code: "02",
+      //   name: "New Business",
+      //   description: "Business description placeholder.",
+      //   lines: [
+      //     {
+      //       name: "Product Line X",
+      //       description: "Product line description placeholder.",
+      //       items: [
+      //         {
+      //           name: "PRODUCT 001",
+      //           icon: "",
+      //           description: "One-line placeholder description.",
+      //           links: [
+      //             { label: "Website", href: "#" },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
     ],
 
     footer: {
       contactLabel: "Contact",
-      email: "hello@example.com",             // placeholder
+      email: "admin@wehomosapiens.com",             // placeholder
       copyright: "© WEHOMOSAPIENS",
     },
     langToggle: "中文",                        // label shown on the language toggle
