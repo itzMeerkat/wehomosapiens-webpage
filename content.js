@@ -73,7 +73,8 @@ var STRINGS = {
                 icon: "assets/app_icons/teleprompter.svg",
                 description: "好用的提词器，支持在任意软件上用悬浮窗展示提词内容，还支持用 Apple Watch App 进行遥控。",
                 links: [
-                  { label: "App Store（建设中）", href: "#" }
+                  { label: "App Store（建设中）", href: "#" },
+                  { label: "隐私政策", href: "teleprompter-rc/privacy/" },
                 ],
               },
               // {
@@ -170,6 +171,7 @@ var STRINGS = {
                 description: "One of the best teleprompter, allow floating window on any camera app. Also support using Apple Watch App as remote controller.",
                 links: [
                   { label: "App Store (Under construction)", href: "#" },
+                  { label: "Privacy Policy", href: "teleprompter-rc/privacy/" },
                 ],
               },
               // {
